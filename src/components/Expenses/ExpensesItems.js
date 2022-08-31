@@ -9,6 +9,7 @@ import ExpensesChart from "./ExpensesChart";
 function ExpensesItems({ expenses, onFilterPrice }) {
   const [filterDate, setFilterDate] = useState("2020");
   const [filteredExpenses, setFilteredExpenses] = useState([]);
+  const [showAllExpensesChart, setShowAllExpensesChart] = useState(false);
 
   useEffect(() => {
     if (filterDate) {
@@ -33,10 +34,15 @@ function ExpensesItems({ expenses, onFilterPrice }) {
           onSetFilterDate={setFilterDate}
           date={filterDate}
           onSetFilteredExpenses={setFilteredExpenses}
+          onToggleShowAllExpensesChart={setShowAllExpensesChart}
         />
       </div>
       <br />
-      <ExpensesChart expenses={filteredExpenses} date={filterDate} />
+      {showAllExpensesChart ? (
+        <ExpensesChart expenses={expenses} date={filterDate} />
+      ) : (
+        <ExpensesChart expenses={filteredExpenses} date={filterDate} />
+      )}
       <br />
       <ExpensesList
         expenses={expenses}

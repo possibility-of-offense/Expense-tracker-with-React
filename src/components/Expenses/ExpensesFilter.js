@@ -8,10 +8,14 @@ const ExpensesFilter = (props) => {
   // const [selected, setSelected] = useState("2020");
   const [selected, setSelected] = useState("2020");
   const [title, setTitle] = useState("Filter by price");
+  const [showRestoreButton, setShowRestoreButton] = useState(false);
 
   function handleSelectedDate(e) {
     setSelected((prev) => (prev = e.target.value));
     props.onSetFilterDate(e.target.value);
+    props.onToggleShowAllExpensesChart(false);
+
+    setShowRestoreButton(true);
   }
 
   function checkStateValue(state, value) {
@@ -38,6 +42,7 @@ const ExpensesFilter = (props) => {
   function handleRestoreExpenses() {
     props.onSetFilterDate(null);
     props.onSetFilteredExpenses((prev) => []);
+    props.onToggleShowAllExpensesChart(true);
   }
 
   return (
@@ -53,7 +58,11 @@ const ExpensesFilter = (props) => {
             {title}
           </Button>
         </div>
-        <p>Currently selected date: {props.date}</p>
+        {props.date ? (
+          <p>Currently selected date: {props.date}</p>
+        ) : (
+          <p>No date selected</p>
+        )}
         <div>
           <select value={selected} onChange={handleSelectedDate}>
             <option value="2022">2022</option>
@@ -62,9 +71,11 @@ const ExpensesFilter = (props) => {
             <option value="2019">2019</option>
           </select>
           <br />
-          <Button onClick={handleRestoreExpenses} className="restore">
-            Restore all expenses
-          </Button>
+          {showRestoreButton && (
+            <Button onClick={handleRestoreExpenses} className="restore">
+              Restore all expenses
+            </Button>
+          )}
         </div>
       </div>
     </div>
