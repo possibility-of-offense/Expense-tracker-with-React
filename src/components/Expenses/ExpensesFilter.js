@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import Button from "../UI/Button";
+import styled from "styled-components";
 
 import "./ExpensesFilter.css";
 import "./ExpenseItem.css";
+import classes from "./Filter.module.css";
+
+const FilterTitle = styled.div`
+  text-align: center;
+  display: ${(props) => (props.show ? "none" : "block")};
+
+  @media (max-width: 600px) {
+    text-decoration: underline;
+  }
+`;
 
 const ExpensesFilter = (props) => {
-  // const [selected, setSelected] = useState("2020");
   const [selected, setSelected] = useState("2020");
   const [title, setTitle] = useState("Filter by price");
   const [showRestoreButton, setShowRestoreButton] = useState(false);
@@ -47,6 +57,12 @@ const ExpensesFilter = (props) => {
 
   return (
     <div className="expenses-filter">
+      <FilterTitle
+        className={classes["filtering-title"]}
+        show={showRestoreButton}
+      >
+        It's time to filter stuff...
+      </FilterTitle>
       <div className="expenses-filter__control">
         <div className="filtering">
           <label>Filter by year</label>

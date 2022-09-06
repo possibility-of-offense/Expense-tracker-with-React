@@ -24,3 +24,7 @@
 .new-expense__actions {
   text-align: right;
 }
+
+form.invalid-input input[name="title"] {
+  border: 2px solid rgb(231 98 98);
+}

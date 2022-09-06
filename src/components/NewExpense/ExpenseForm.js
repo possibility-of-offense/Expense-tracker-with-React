@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 function ExpenseForm(props) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("0.00");
+  const [submitted, setSubmitted] = useState(true);
 
   let today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
@@ -26,18 +27,21 @@ function ExpenseForm(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const expense = {
-      title: title,
-      amount: Number(amount),
-      date: new Date(date),
-    };
-    props.onSaveExpenseData(expense, "Added");
+    if (!title || !amount) {
+      setSubmitted(false);
+    } else {
+      const expense = {
+        title: title,
+        amount: Number(amount),
+        date: new Date(date),
+      };
+      props.onSaveExpenseData(expense, "Added");
+      inputRef.current.focus();
+    }
 
     setTitle("");
     setAmount("");
     setExpenseDate("");
-
-    inputRef.current.focus();
   }
 
   // Close form
@@ -46,8 +50,13 @@ function ExpenseForm(props) {
     props.onCloseForm();
   }
 
+  // let count = 0;
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className={!Boolean(submitted) ? "invalid-input" : ""}
+    >
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
@@ -58,6 +67,7 @@ function ExpenseForm(props) {
             placeholder="Title to set"
             value={title}
             ref={inputRef}
+            name="title"
           />
         </div>
         <div className="new-expense__control">
