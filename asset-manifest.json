@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Multiselect-React/static/css/main.9ba74c14.chunk.css",
+    "main.js": "/Multiselect-React/static/js/main.f0e446c0.chunk.js",
+    "main.js.map": "/Multiselect-React/static/js/main.f0e446c0.chunk.js.map",
+    "runtime-main.js": "/Multiselect-React/static/js/runtime-main.8caa58f8.js",
+    "runtime-main.js.map": "/Multiselect-React/static/js/runtime-main.8caa58f8.js.map",
+    "static/js/2.ecc5b84c.chunk.js": "/Multiselect-React/static/js/2.ecc5b84c.chunk.js",
+    "static/js/2.ecc5b84c.chunk.js.map": "/Multiselect-React/static/js/2.ecc5b84c.chunk.js.map",
+    "index.html": "/Multiselect-React/index.html",
+    "static/css/main.9ba74c14.chunk.css.map": "/Multiselect-React/static/css/main.9ba74c14.chunk.css.map",
+    "static/js/2.ecc5b84c.chunk.js.LICENSE.txt": "/Multiselect-React/static/js/2.ecc5b84c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8caa58f8.js",
+    "static/js/2.ecc5b84c.chunk.js",
+    "static/css/main.9ba74c14.chunk.css",
+    "static/js/main.f0e446c0.chunk.js"
+  ]
+}
